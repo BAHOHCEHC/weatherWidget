@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+.center{
+    text-align: center;
+}
+table{
+    width: 100%
+}
+
+.dfl {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  button {
+    margin: 20px 0 0;
+  }
+}
+td {
+  img {
+    width: 50px;
+  }
+}

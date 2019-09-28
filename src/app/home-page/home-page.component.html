@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mh250">
+      <app-current-weather></app-current-weather>
+    </div>
+
+    <div class="col-md-4 mh250 dfl">
+      <app-buttons class="dfl" (onRefresh)="refreshWeatherData()"></app-buttons>
+    </div>
+
+    <div class="col-md-12">
+      <app-weather-data #weatherDataRef></app-weather-data>
+    </div>
+    <div class="col-md-12">
+      <app-forecast></app-forecast>
+    </div>
+  </div>
+</div>

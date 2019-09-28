@@ -1,0 +1,43 @@
+<div *ngIf='resultFound()'>
+  <h3 class="center title">Forecast for {{currentWeather.name}}</h3>
+  <div class="container">
+    <div class="row">
+      <div class="wraper col-md-4" *ngFor='let l of forecast.list'>
+        <mat-card class="mat-elevation-z18 ">
+          <mat-card-header>
+            <mat-card-title>
+              <h6>{{l.dt*1000 | date:'MMM d, y, h:mm a'}}</h6>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <table *ngIf='resultFound()'>
+              <tbody>
+                <tr>
+                  <td>Min t</td>
+                  <td>{{l.main?.temp_min - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+                </tr>
+                <tr>
+                  <td>Max t</td>
+                  <td>{{l.main?.temp_max - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+                </tr>
+                <tr>
+                  <td>Weather</td>
+                  <td>
+                    <div *ngFor='let w of l.weather'>
+                      {{w?.main }}: {{w?.description }}
+                      <img [src]="getIcon(w?.icon)">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf='!resultFound()'>
+  <h1 class="center">Failed to get weather</h1>
+</div>

@@ -1,0 +1,40 @@
+<h3 class="center" *ngIf='resultFound()'>Current weather for {{currentWeather.name}}</h3>
+<table *ngIf='resultFound()'>
+  <tbody>
+    <tr>
+      <td>
+        <p>Current Temperature:</p>
+      </td>
+      <td>
+        <p>{{currentWeather.main?.temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Max t:</p>
+      </td>
+      <td>
+        <p>{{currentWeather.main?.temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Min t:</p>
+      </td>
+      <td>
+        <p>{{currentWeather.main?.temp_min - 273.15 | number:'1.0-0'}}<sup>o</sup>C</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Description</p>
+      </td>
+      <td>
+        <p><img [src]="image" [alt]="image">{{currentWeather.weather[0].description}}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf='!resultFound()'>
+  <h1 class="center">{{msg || 'Failed to get weather.'}}</h1>
+</div>

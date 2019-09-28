@@ -1,0 +1,43 @@
+<h3 class="center title">Current weather data</h3>
+<div class="container">
+  <div class="row" *ngIf="weatherData$ | async as weatherData; else loader">
+    <div class="wraper col-md-4" *ngFor='let curentData of weatherData'>
+      <mat-card class="mat-elevation-z18 ">
+        <mat-card-header>
+          <mat-card-title>
+            <h6>
+              <span>{{curentData.name}}</span>
+              {{curentData.dt | date:'HH:mm:ss'}}</h6>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table>
+            <tbody>
+              <tr>
+                <td>Min t</td>
+                <td>{{curentData.main?.temp_min - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+              </tr>
+              <tr>
+                <td>Max t</td>
+                <td>{{curentData.main?.temp_max - 273.15 | number:'1.0-0'}}<sup>o</sup>C</td>
+              </tr>
+              <tr>
+                <td>Weather</td>
+                <td>
+                  <div class="center dfl" *ngFor='let w of curentData.weather'>
+                    {{w?.main }}: {{w?.description }}
+                    <img class="center" [src]="getIcon(w?.icon)">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+<ng-template #loader>
+  <h1 class="center">Load data</h1>
+</ng-template>
